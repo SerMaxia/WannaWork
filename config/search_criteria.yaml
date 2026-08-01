@@ -1,0 +1,35 @@
+# Critères de recherche pour le scraping d'offres
+
+# Mots-clés de recherche — consolidés (5 au lieu de 12)
+# Chaque keyword couvre un domaine distinct pour éviter les doublons
+keywords:
+  - "alternance devops"
+  - "apprentissage administrateur système"
+  - "alternance infrastructure cloud"
+  - "alternance développeur fullstack"
+  - "alternance SRE"
+
+# Localisation
+location: "Toulouse"
+region: "Occitanie"
+latitude: 43.6047
+longitude: 1.4442
+radius_km: 50
+
+# Filtres
+contract_types:
+  - "alternance"
+  - "apprentissage"
+  - "contrat de professionnalisation"
+experience_level:
+  - "junior"
+  - "débutant"
+  - "0-2 ans"
+
+# Fréquence de scraping
+schedule:
+  interval_hours: 6
+  max_pages_per_source: 5
+
+# Seuil de matching minimum pour générer une LM
+matching_threshold: 55

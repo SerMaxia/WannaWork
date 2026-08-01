@@ -1,0 +1,40 @@
+{
+  "name": "alternance-hunter",
+  "version": "1.0.0",
+  "description": "Automatisation de recherche d'alternance DevOps — scraping, matching, LM, dashboard",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js --serve",
+    "scrape": "node main.js --scrape",
+    "dashboard": "node main.js --serve",
+    "scheduler": "node scheduler.js",
+    "dry-run": "node main.js --dry-run",
+    "scrape:indeed": "node main.js --scrape --indeed",
+    "scrape:wttj": "node main.js --scrape --wttj",
+    "scrape:hellowork": "node main.js --scrape --hellowork",
+    "scrape:linkedin": "node main.js --scrape --linkedin"
+  },
+  "keywords": [
+    "alternance",
+    "devops",
+    "scraper",
+    "job-search"
+  ],
+  "author": "Mathéo Cluts-Blot",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "axios": "^1.18.1",
+    "better-sqlite3": "^12.11.1",
+    "cheerio": "^1.2.0",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "js-yaml": "^5.2.1",
+    "node-cron": "^4.6.0",
+    "pdfjs-dist": "^6.1.200",
+    "puppeteer": "^25.3.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}

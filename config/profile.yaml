@@ -1,0 +1,212 @@
+# Profil de Mathéo Cluts-Blot — Extrait des CVs ATS
+
+# Informations personnelles
+nom: "Cluts-Blot"
+prenom: "Mathéo"
+email: "blot.matheo@outlook.fr"
+telephone: "06.21.03.73.01"
+localisation: "Toulouse (31200)"
+linkedin: "" # À compléter avec l'URL LinkedIn
+github: ""   # À compléter avec l'URL GitHub
+
+# Formation
+formation:
+  niveau: "Bac+3"
+  diplome: "Bachelor Socle Numérique / Système & Réseau"
+  ecole: "EPSI Toulouse"
+  specialite: "Système & Réseau / Développement Full Stack"
+  annee_en_cours: "2ème année (2025-2026)"
+  certifications:
+    - "Certification numérique PIX (Faculté des sciences de Montpellier, 2022)"
+    - "Formation EBIOS"
+  annee_debut_alternance: 2026
+
+# Contrat recherché
+recherche:
+  type: "alternance"
+  rythme: "" # À compléter - ex: 3 semaines entreprise / 1 semaine école
+  zone_geographique:
+    - "Toulouse"
+    - "Occitanie"
+    - "Remote"
+  rayon_km: 50
+  domaines:
+    - "DevOps"
+    - "Administrateur Systèmes & Réseaux"
+    - "Technicien Système & Réseau"
+    - "Développeur Full Stack"
+    - "SRE"
+    - "Infrastructure"
+    - "Cloud"
+  date_debut: "Août 2026"
+  duree: "" # À compléter
+
+# Compétences techniques (fusionnées des 2 CVs)
+competences:
+  langages:
+    - "TypeScript"
+    - "JavaScript"
+    - "Python"
+    - "Java"
+    - "C#"
+    - "Bash"
+    - "YAML"
+    - "SQL"
+    - "HTML"
+    - "CSS"
+  frameworks:
+    - "React 19"
+    - "Next.js 14"
+    - "Vite 8"
+    - "Node.js"
+    - "Tailwind CSS"
+    - "Zod"
+    - "Express"
+  devops:
+    - "Docker"
+    - "Docker Compose"
+    - "Ansible"
+    - "GitLab CI"
+    - "GitHub Actions"
+    - "GitHub Pages"
+    - "CI/CD"
+    - "Kubernetes (notions)"
+  cloud_infra:
+    - "VPN Mesh Tailscale"
+    - "Tunneling (playit.gg)"
+    - "DynFi Firewall"
+    - "Nginx Proxy Manager"
+  systemes:
+    - "Linux (Arch/Garuda/Debian)"
+    - "Windows Server (AD, GPO, DNS, DHCP)"
+    - "GLPI"
+  supervision:
+    - "Grafana"
+    - "Loki"
+    - "Mimir"
+    - "Alloy"
+    - "Prometheus"
+    - "node_exporter"
+    - "Uptime Kuma"
+    - "Glances"
+  bases_de_donnees:
+    - "MongoDB"
+    - "Mongoose"
+    - "SQL"
+  securite:
+    - "Trivy"
+    - "Vault"
+    - "Vaultwarden"
+    - "DevSecOps"
+    - "Principe de moindre privilège"
+    - "EBIOS"
+  outils:
+    - "Git"
+    - "GitHub"
+    - "ESLint 9"
+    - "Wiki.js"
+    - "Ollama (LLM locaux)"
+
+# Expériences professionnelles
+experiences:
+  - poste: "Stagiaire Développement Frontend"
+    entreprise: "ED&DISCE"
+    lieu: "Échirolles (38)"
+    periode: "Janvier – Février 2026"
+    description: >
+      Conception et développement d'une interface web d'édition et de révision
+      de cours pédagogiques (Éditeur de Cours UMSI), en autonomie et 100% télétravail.
+      Développement de 5 types de composants de contenu avec rendu polymorphe.
+      Implémentation d'un système de thème dynamique et sauvegarde automatique avec debounce.
+    technologies:
+      - "Next.js 14"
+      - "React"
+      - "TypeScript"
+      - "Tailwind CSS"
+      - "Zod"
+      - "MongoDB/Mongoose"
+      - "API REST"
+      - "Git/GitHub"
+
+  - poste: "Assistant Pédagogique"
+    entreprise: "CertifEco"
+    lieu: "Montpellier (34)"
+    periode: "2024"
+    description: >
+      Support informatique de premier niveau auprès des équipes et apprenants.
+      Gestion des plannings de formations et de la communication interne.
+      Archivage et entretien des dossiers scolaires.
+    technologies:
+      - "Support IT niveau 1"
+
+  - poste: "Intérimaire"
+    entreprise: "Banque Populaire du Sud"
+    lieu: "Amélie-les-Bains (66)"
+    periode: "2020, 2021 et 2023"
+    description: >
+      Accueil et gestion des opérations courantes auprès des clients.
+      Profilage et démarchage commercial, mise à jour des dossiers clients.
+    technologies: []
+
+# Projets personnels
+projets:
+  - nom: "Infrastructure home-lab"
+    description: >
+      Environnement virtualisé (serveur basse consommation), orchestration de 18 conteneurs
+      Docker Compose (Nginx Proxy Manager, Vaultwarden, Wiki.js, LLM Ollama, bot LinkedIn),
+      VPN Mesh Tailscale, firewall DynFi (pfsync), monitoring (Uptime Kuma, Glances),
+      automatisation Ansible.
+    technologies:
+      - "Docker Compose"
+      - "Ansible"
+      - "Tailscale"
+      - "DynFi"
+      - "Nginx Proxy Manager"
+      - "Ollama"
+      - "Uptime Kuma"
+      - "Wiki.js"
+
+  - nom: "Projets web SaaS"
+    description: >
+      Conception de SPAs modulaires (React 19, Next.js 14, Vite 8).
+      Interfaces réactives avec Tailwind CSS (Flashcards 3D, éditeur de texte).
+      Validation stricte via Zod. Déploiement automatisé (GitHub Pages).
+    technologies:
+      - "React 19"
+      - "Next.js 14"
+      - "Vite 8"
+      - "Tailwind CSS"
+      - "Zod"
+      - "ESLint 9"
+      - "GitHub Pages"
+
+  - nom: "Auto-hébergement & modding"
+    description: >
+      Déploiement serveur Minecraft via tunneling cloud, modding autodidacte
+      (Java, C#, Python), dualboot GarudaOS.
+    technologies:
+      - "Java"
+      - "C#"
+      - "Python"
+
+# Soft skills
+soft_skills:
+  - "Apprentissage rapide"
+  - "Autonome"
+  - "À l'aise en télétravail"
+  - "Travail en équipe"
+  - "Anglais courant (C1)"
+  - "Permis B, véhiculé"
+
+# Centres d'intérêt
+centres_interet:
+  - "Jeux vidéo"
+  - "Codage"
+  - "Musique"
+  - "Miniaturisme"
+  - "Jeux de cartes"
+
+# CVs disponibles (à joindre aux candidatures)
+cvs:
+  devops: "CV_Matheo_Cluts-Blot_ATS.pdf.pdf"
+  dev: "CV_Matheo_Dev_ATS.pdf"

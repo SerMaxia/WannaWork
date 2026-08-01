@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard de suivi de recherche d'alternance - Alternance Hunter">
+  <title>Alternance Hunter — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="header-content">
+      <div class="logo">
+        <span class="logo-icon">🚀</span>
+        <h1>Alternance Hunter</h1>
+        <span class="badge">v1.0</span>
+      </div>
+      <div class="header-actions">
+        <button id="btn-refresh" class="btn btn-secondary" onclick="loadData()">
+          <span class="btn-icon">🔄</span> Actualiser
+        </button>
+        <button id="btn-scrape" class="btn btn-primary" onclick="triggerScrape()">
+          <span class="btn-icon">🕷️</span> Lancer un scrape
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stats Bar -->
+  <section id="stats-bar">
+    <div class="stat-card" id="stat-total">
+      <div class="stat-value">-</div>
+      <div class="stat-label">Offres totales</div>
+      <div class="stat-icon">📋</div>
+    </div>
+    <div class="stat-card" id="stat-today">
+      <div class="stat-value">-</div>
+      <div class="stat-label">Aujourd'hui</div>
+      <div class="stat-icon">📅</div>
+    </div>
+    <div class="stat-card" id="stat-highMatch">
+      <div class="stat-value">-</div>
+      <div class="stat-label">Match ≥ 70%</div>
+      <div class="stat-icon">🎯</div>
+    </div>
+    <div class="stat-card" id="stat-avgScore">
+      <div class="stat-value">-</div>
+      <div class="stat-label">Score moyen</div>
+      <div class="stat-icon">📊</div>
+    </div>
+    <div class="stat-card" id="stat-applied">
+      <div class="stat-value">-</div>
+      <div class="stat-label">Candidatures</div>
+      <div class="stat-icon">📧</div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section id="filters">
+    <div class="filters-content">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="filter-search" placeholder="Rechercher une offre, entreprise..." oninput="debounceFilter()">
+      </div>
+      <div class="filter-group">
+        <select id="filter-source" onchange="applyFilters()">
+          <option value="">Toutes les sources</option>
+          <option value="indeed">Indeed</option>
+          <option value="wttj">WTTJ</option>
+          <option value="hellowork">HelloWork</option>
+          <option value="linkedin">LinkedIn</option>
+        </select>
+        <select id="filter-status" onchange="applyFilters()">
+          <option value="">Tous les statuts</option>
+          <option value="new">Nouveau</option>
+          <option value="lm_generated">LM générée</option>
+          <option value="applied">Postulé</option>
+          <option value="interview">Entretien</option>
+          <option value="rejected">Refusé</option>
+        </select>
+        <select id="filter-score" onchange="applyFilters()">
+          <option value="">Tous les scores</option>
+          <option value="80">≥ 80%</option>
+          <option value="60">≥ 60%</option>
+          <option value="40">≥ 40%</option>
+        </select>
+        <select id="filter-sort" onchange="applyFilters()">
+          <option value="matching_score">Tri par score</option>
+          <option value="scraped_at">Tri par date</option>
+          <option value="company">Tri par entreprise</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- View Toggle Tabs -->
+  <section id="view-tabs" class="view-tabs">
+    <button id="tab-list" class="tab-btn active" onclick="switchView('list')">🔍 Recherche & Nouvelles offres</button>
+    <button id="tab-kanban" class="tab-btn" onclick="switchView('kanban')">📋 Suivi des candidatures (Kanban)</button>
+  </section>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    
+    <!-- ====== VIEW: LIST ====== -->
+    <div id="list-view" class="view-container active-view">
+      <!-- Job List -->
+      <section id="job-list">
+        <div class="section-header">
+          <h2>Offres d'alternance</h2>
+          <span id="job-count" class="count-badge">0</span>
+        </div>
+        <div id="jobs-container">
+          <div class="loading">
+            <div class="spinner"></div>
+            <p>Chargement des offres...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Job Detail Panel -->
+      <aside id="job-detail" class="hidden">
+        <div class="detail-header">
+          <button class="btn-close" onclick="closeDetail()">✕</button>
+          <div id="detail-score" class="detail-score"></div>
+        </div>
+        <div id="detail-content">
+          <!-- Filled dynamically -->
+        </div>
+      </aside>
+    </div>
+
+    <!-- ====== VIEW: KANBAN ====== -->
+    <div id="kanban-view" class="view-container hidden-view">
+      <div class="kanban-board">
+        <!-- Columns will be generated by JS -->
+        <div class="k-column" data-status="new">
+          <div class="k-header">🆕 Nouveau <span class="k-count">0</span></div>
+          <div class="k-cards" id="k-col-new"></div>
+        </div>
+        <div class="k-column" data-status="lm_generated">
+          <div class="k-header">✍️ LM générée <span class="k-count">0</span></div>
+          <div class="k-cards" id="k-col-lm_generated"></div>
+        </div>
+        <div class="k-column" data-status="applied">
+          <div class="k-header">📧 Postulé <span class="k-count">0</span></div>
+          <div class="k-cards" id="k-col-applied"></div>
+        </div>
+        <div class="k-column" data-status="interview">
+          <div class="k-header">🤝 Entretien <span class="k-count">0</span></div>
+          <div class="k-cards" id="k-col-interview"></div>
+        </div>
+        <div class="k-column" data-status="rejected">
+          <div class="k-header">❌ Refusé <span class="k-count">0</span></div>
+          <div class="k-cards" id="k-col-rejected"></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Cover Letter Modal -->
+  <div id="modal-overlay" class="hidden" onclick="closeModal()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 id="modal-title">Lettre de motivation</h3>
+        <button class="btn-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <textarea id="modal-cover-letter" rows="20" placeholder="La lettre de motivation apparaîtra ici..."></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal()">Fermer</button>
+        <button class="btn btn-primary" id="btn-save-lm" onclick="saveCoverLetter()">💾 Sauvegarder</button>
+        <button class="btn btn-accent" onclick="copyCoverLetter()">📋 Copier</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
