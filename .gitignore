@@ -1,5 +1,8 @@
 node_modules/
-data/jobs.db
+data/*.db
+data/*.db-wal
+data/*.db-shm
 config/.env
 *.log
+*.png
 .DS_Store
